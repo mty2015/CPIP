@@ -10,34 +10,28 @@
 
 def search_for_patterns(s: str, p: str) -> int:
 
-    pl = len(p)
-    if pl == 0:
+    if len(p) == 0:
         return -1
     if len(s) == 0:
         return -1
 
-    i = 0
-    j = -1
-    for c in s:
-        j += 1
-        if c == p[i]:
-            if i == pl - 1:
-                return j - pl + 1
+    i = j  = 0
+    while j + i < len(s):
+        if s[j+i] == p[i]:
+            if i == len(p) - 1:
+                return j
             else:
                 i += 1
         else:
-            if i == 0:
-                continue
-            else:
-                if c == p[0]:
-                    i = 1
-                else:
-                    i = 0
+            j += 1
+            i = 0
 
     return -1
 
 
 if __name__ == '__main__':
-    print(search_for_patterns("lalopalalali", "lala"))
-    print(search_for_patterns("lallpalalali", "lala"))
-    print(search_for_patterns("lallalaalali", "lala"))
+    print(search_for_patterns("lalopalalali", "lala"))  # 6
+    print(search_for_patterns("lallpalalali", "lala"))  # 6
+    print(search_for_patterns("lallalaalali", "lala"))  # 3
+    print(search_for_patterns("lalalalablali", "lalalab"))  # 2
+    print(search_for_patterns("lalalalablali", "lalalaba"))  # -1
