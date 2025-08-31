@@ -6,6 +6,9 @@
 # we want to find the first index i such that t is a factor of s at the position i.
 # The response should be −1 if t is not a factor of s.
 
+# 这个实现复杂度是：O(mn)
+# 书中使用的 Knuth–Morris–Pratt 算法，可以达到 O(m + n)，
+# 本质上使用了动态规划算法从而避免重复计算，处理得非常精妙，思路值得学习。
 
 
 def search_for_patterns(s: str, p: str) -> int:
